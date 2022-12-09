@@ -280,6 +280,7 @@ all2[scale_cols] = scaler.fit_transform(all2[scale_cols])
 sfs.fit(all2[valid_cols2], all2["next_game"]) #df2
 
 predictors3 = list(valid_cols2[sfs.get_support()])
+print(predictors3)
 
 predictions3 = backtest(all2, rr, predictors3) #df2
 
@@ -395,7 +396,7 @@ def backtestNN(data, start=2, step=1):
       print(model.summary())
       history = model.fit(x_train, y_train, epochs=350, batch_size=100, validation_data=[x_test, y_test])
       
-      # plt.hist(model.predict(x_test),100)
+      plt.hist(model.predict(x_test),100)
 
       # Finetune
       model.compile(optimizer=keras.optimizers.Adam(learning_rate=0.0005), # play around
@@ -422,7 +423,7 @@ def backtestNN(data, start=2, step=1):
       print(model.summary())
       history = model.fit(x_train, y_train, epochs=350, batch_size=100, validation_data=[x_test, y_test])
       
-      # plt.hist(model.predict(x_test),100)
+      plt.hist(model.predict(x_test),100)
 
       # Finetune
       model.compile(optimizer=keras.optimizers.Adam(learning_rate=0.0005), # play around
@@ -448,7 +449,7 @@ def backtestNN(data, start=2, step=1):
       print(model.summary())
       history = model.fit(x_train, y_train, epochs=200, batch_size=100, validation_data=[x_test, y_test])
       
-      # plt.hist(model.predict(x_test),100)
+      plt.hist(model.predict(x_test),100)
 
       # Finetune
       model.compile(optimizer=keras.optimizers.Adam(learning_rate=0.0005), # play around
@@ -473,7 +474,7 @@ def backtestNN(data, start=2, step=1):
       print(model.summary())
       history = model.fit(x_train, y_train, epochs=100, batch_size=100, validation_data=[x_test, y_test])
       
-      # plt.hist(model.predict(x_test),100)
+      plt.hist(model.predict(x_test),100)
 
       # Finetune
       model.compile(optimizer=keras.optimizers.Adam(learning_rate=0.0005), # play around
@@ -497,7 +498,7 @@ def backtestNN(data, start=2, step=1):
       print(model.summary())
       history = model.fit(x_train, y_train, epochs=100, batch_size=100, validation_data=[x_test, y_test])
       
-      # plt.hist(model.predict(x_test),100)
+      plt.hist(model.predict(x_test),100)
 
       # Finetune
       model.compile(optimizer=keras.optimizers.Adam(learning_rate=0.0005), # play around
@@ -521,31 +522,30 @@ def backtestNN(data, start=2, step=1):
 
 
 predictions,predictions2 = backtestNN(all3, start=2, step=1)
-#2019 is overfitting
 
-# plt1 = plt.plot(predictions[0].history['accuracy'], label='accuracy')
-# plt1 = plt.plot(predictions[0].history['val_accuracy'])
-# plt1 = plt.legend()
-# plt1
-
-
-# plt2 = plt.plot(predictions2[1].history['accuracy'], label='accuracy')
-# plt2 = plt.plot(predictions2[1].history['val_accuracy'])
-# plt2 = plt.legend()
-# plt2
+plt1 = plt.plot(predictions[0].history['accuracy'], label='accuracy')
+plt1 = plt.plot(predictions[0].history['val_accuracy'])
+plt1 = plt.legend()
+plt1
 
 
-# plt3 = plt.plot(predictions[2].history['accuracy'], label='accuracy')
-# plt3 = plt.plot(predictions[2].history['val_accuracy'])
-# plt3 = plt.legend()
-# plt3
+plt2 = plt.plot(predictions2[1].history['accuracy'], label='accuracy')
+plt2 = plt.plot(predictions2[1].history['val_accuracy'])
+plt2 = plt.legend()
+plt2
 
-# plt4 = plt.plot(predictions[3].history['accuracy'], label='accuracy')
-# plt4 = plt.plot(predictions[3].history['val_accuracy'])
-# plt4 = plt.legend()
-# plt4
 
-# plt5 = plt.plot(predictions[4].history['accuracy'], label='accuracy')
-# plt5 = plt.plot(predictions[4].history['val_accuracy'])
-# plt5 = plt.legend()
-# plt5
+plt3 = plt.plot(predictions[2].history['accuracy'], label='accuracy')
+plt3 = plt.plot(predictions[2].history['val_accuracy'])
+plt3 = plt.legend()
+plt3
+
+plt4 = plt.plot(predictions[3].history['accuracy'], label='accuracy')
+plt4 = plt.plot(predictions[3].history['val_accuracy'])
+plt4 = plt.legend()
+plt4
+
+plt5 = plt.plot(predictions[4].history['accuracy'], label='accuracy')
+plt5 = plt.plot(predictions[4].history['val_accuracy'])
+plt5 = plt.legend()
+plt5
